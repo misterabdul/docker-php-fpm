@@ -35,6 +35,7 @@ RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS \
         openssl \
         pdo \
         pdo_mysql \
+        pdo_pgsql \
         redis \
         soap \
         sodium \
