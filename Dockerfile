@@ -1,4 +1,4 @@
-FROM php:8.1.14-fpm-alpine3.17
+FROM php:8.1.14-alpine3.17
 
 LABEL MAINTAINER="Abdul Pasaribu" \
     "GitHub Link"="https://github.com/misterabdul" \
@@ -27,3 +27,7 @@ RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS \
     && rm /usr/local/etc/php/conf.d/docker-php-memlimit.ini \
 # Install msmtp - To Send Mails on Production & Development
     && apk add msmtp
+
+RUN mkdir /etc/cron.d && mkdir /var/log/cron
+
+CMD ["/usr/sbin/crond", "-f", "-c", "/etc/cron.d", "-L", "/var/log/cron/cron.log"]
