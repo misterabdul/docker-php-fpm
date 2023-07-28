@@ -1,10 +1,10 @@
-FROM php:8.1.21-fpm-alpine3.18
+FROM php:8.2.8-fpm-alpine3.18
 
 LABEL MAINTAINER="Abdul Pasaribu" \
     "Email"="mail@misterabdul.moe" \
     "GitHub Link"="https://github.com/misterabdul/docker-php-fpm" \
     "DockerHub Link"="https://hub.docker.com/r/misterabdul/php" \
-    "PHP Version"="8.1.21" \
+    "PHP Version"="8.2.8" \
     "Alpine Linux Version"="3.18"
 
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/download/2.1.37/install-php-extensions /usr/local/bin/
