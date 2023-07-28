@@ -1,7 +1,9 @@
 FROM php:8.1.14-fpm-alpine3.17
 
 LABEL MAINTAINER="Abdul Pasaribu" \
-    "GitHub Link"="https://github.com/misterabdul" \
+    "Email"="mail@misterabdul.moe" \
+    "GitHub Link"="https://github.com/misterabdul/docker-php-fpm" \
+    "DockerHub Link"="https://hub.docker.com/r/misterabdul/php" \
     "PHP Version"="8.1.14" \
     "Alpine Linux Version"="3.17"
 
