@@ -7,7 +7,7 @@ LABEL MAINTAINER="Abdul Pasaribu" \
     "PHP Version"="8.1.14" \
     "Alpine Linux Version"="3.17"
 
-ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
+ADD https://github.com/mlocati/docker-php-extension-installer/releases/download/2.1.37/install-php-extensions /usr/local/bin/
 
 RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS \
     && echo "memory_limit = -1" >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini \
