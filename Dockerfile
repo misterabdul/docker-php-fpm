@@ -1,13 +1,13 @@
-FROM php:8.2.13-alpine3.18
+FROM php:8.3.3-alpine3.19
 
 LABEL MAINTAINER="Abdul Pasaribu" \
     "Email"="mail@misterabdul.moe" \
     "GitHub Link"="https://github.com/misterabdul/docker-php-fpm" \
     "DockerHub Link"="https://hub.docker.com/r/misterabdul/php" \
-    "PHP Version"="8.2.13" \
-    "Alpine Linux Version"="3.18"
+    "PHP Version"="8.3.3" \
+    "Alpine Linux Version"="3.19"
 
-ADD https://github.com/mlocati/docker-php-extension-installer/releases/download/2.1.67/install-php-extensions /usr/local/bin/
+ADD https://github.com/mlocati/docker-php-extension-installer/releases/download/2.2.2/install-php-extensions /usr/local/bin/
 
 RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS \
     && echo "memory_limit = -1" >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini \
@@ -15,7 +15,7 @@ RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS \
     && docker-php-ext-enable uploadprogress \
     && apk del .build-deps $PHPIZE_DEPS \
     && chmod uga+x /usr/local/bin/install-php-extensions && sync \
-    && install-php-extensions bcmath bz2 calendar curl exif fileinfo ftp gd gettext imagick imap intl ldap mbstring mcrypt \
+    && install-php-extensions bcmath bz2 calendar curl exif fileinfo ftp gd gettext Imagick/imagick@master imap intl ldap mbstring mcrypt \
         memcached mongodb mysqli opcache openssl pdo pdo_mysql pdo_pgsql redis soap sodium sysvsem sysvshm xmlrpc xsl zip \
     &&  echo -e "\n opcache.enable=1 \n opcache.enable_cli=1 \n opcache.memory_consumption=128 \n opcache.interned_strings_buffer=8 \n opcache.max_accelerated_files=4000 \n opcache.revalidate_freq=60 \n opcache.fast_shutdown=1" >> /usr/local/etc/php/conf.d/docker-php-ext-opcache.ini \
     &&  echo -e "\n xhprof.output_dir='/var/tmp/xhprof'" >> /usr/local/etc/php/conf.d/docker-php-ext-xhprof.ini \
