@@ -1,13 +1,13 @@
-FROM php:8.3.6-fpm-alpine3.19
+FROM php:8.3.10-fpm-alpine3.20
 
 LABEL MAINTAINER="Abdul Pasaribu" \
     "Email"="mail@misterabdul.moe" \
     "GitHub Link"="https://github.com/misterabdul/docker-php-fpm" \
     "DockerHub Link"="https://hub.docker.com/r/misterabdul/php" \
-    "PHP Version"="8.3.6" \
-    "Alpine Linux Version"="3.19"
+    "PHP Version"="8.3.10" \
+    "Alpine Linux Version"="3.20"
 
-ADD https://github.com/mlocati/docker-php-extension-installer/releases/download/2.2.14/install-php-extensions /usr/local/bin/
+ADD https://github.com/mlocati/docker-php-extension-installer/releases/download/2.4.0/install-php-extensions /usr/local/bin/
 
 RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS \
     && echo "memory_limit = -1" >> /usr/local/etc/php/conf.d/docker-php-memlimit.ini \
